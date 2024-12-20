@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Outfit", sans-serif;
+}
+body{
+  /*background: #121212;*/
+  /*white overlay transperency*/
+  /*background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));*/
+  color: #0e0d0d;
+  background: #e7d8d8;
+  
+  
+
+}
+a{
+  text-decoration: none;
+  color: inherit;
+  line-height: 1;
+  cursor: pointer;
+}
+.cusContainer{
+  background: #f0dfdf;
+  border-radius: 30px;
+  padding: 14px 24px;
+  box-shadow: 13px 13px 20px #d8d4d4, -13px -13px 20px #f1eded;
+  
+}
+.cusBtn{
+  background: #e7d8d8;
+  color: #212121;
+  padding: 14px 24px;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+}
+
+
+
+
+/*for responsive*/
+@media (max-width: 1000px){
+  .cusContainer{
+    padding: 10px 20px;
+  }
+  .cusBtn{
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}

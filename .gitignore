@@ -1,0 +1,16 @@
+# Node.js
+backend/db_api/node_modules/
+backend/db_api/.env
+
+# Jupyter Notebooks
+backend/training_model/.ipynb_checkpoints/
+backend/training_model/*.pyc
+backend/webcam/.ipynb_checkpoints/
+backend/webcam/*.pyc
+backend/webcam/.env
+
+# React
+frontend/emotion_echo_frontend/node_modules/
+frontend/emotion_echo_frontend/.env
+frontend/emotion_echo_frontend/build/
+frontend/emotion_echo_frontend/dist/

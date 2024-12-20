@@ -1,0 +1,11 @@
+.error_wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    margin: 0; 
+}
+
+.error_box{
+    text-align: center;
+}
