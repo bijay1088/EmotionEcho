@@ -28,11 +28,11 @@ const LineChart = () => {
     labels: [],
     datasets: [],
   });
+  const [topEmotions, setTopEmotions] = useState({ first: null, second: null });
 
   // Fetch data from the API
   useEffect(() => {
     const token = localStorage.getItem('token');
-    const date = new Date();
 
     if (token) {
       axios
@@ -56,6 +56,7 @@ const LineChart = () => {
   useEffect(() => {
     if (emotionData.length > 0) {
       setNoData(false);
+
       // Count frequencies of all-time emotions
       const emotionCounts = emotionData.reduce((acc, curr) => {
         acc[curr.emotion] = (acc[curr.emotion] || 0) + 1;
@@ -63,12 +64,19 @@ const LineChart = () => {
       }, {});
 
       // Merge labels from both datasets
-      const allLabels = Array.from(
-        new Set([...Object.keys(emotionCounts)])
-      );
+      const allLabels = Array.from(new Set([...Object.keys(emotionCounts)]));
 
       // Generate data arrays
       const allTimeData = allLabels.map((label) => emotionCounts[label] || 0);
+
+      // Find the top two emotions
+      const sortedEmotions = Object.entries(emotionCounts).sort(
+        (a, b) => b[1] - a[1]
+      );
+      const firstEmotion = sortedEmotions[0] ? sortedEmotions[0][0] : null;
+      const secondEmotion = sortedEmotions[1] ? sortedEmotions[1][0] : null;
+
+      setTopEmotions({ first: firstEmotion, second: secondEmotion });
 
       // Update chart data
       setChartData({
@@ -82,7 +90,7 @@ const LineChart = () => {
           },
         ],
       });
-    }else{
+    } else {
       setNoData(true);
     }
   }, [emotionData]);
@@ -93,11 +101,25 @@ const LineChart = () => {
       {error ? (
         <p>Error loading data. Please try again later.</p>
       ) : noData ? (
-        <p className='mt-3'>No data available.</p>
+        <p className="mt-3">No data available.</p>
       ) : (
-        <Line data={chartData} options={{ responsive: true }} />
+        <>
+          <Line data={chartData} options={{ responsive: true }} />
+          <div className="mt-4">
+            {topEmotions.first && (
+              <p>
+                Most of the people are <strong>{topEmotions.first}</strong>
+                {topEmotions.second && (
+                  <>
+                    , and some are <strong>{topEmotions.second}</strong>.
+                  </>
+                )}
+              </p>
+            )}
+          </div>
+        </>
       )}
-      </CDBContainer>
+    </CDBContainer>
   );
 };
 

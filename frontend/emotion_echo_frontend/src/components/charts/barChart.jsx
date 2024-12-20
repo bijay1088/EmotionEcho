@@ -28,6 +28,8 @@ const BarChart = () => {
     datasets: [],
   });
 
+  const [topEmotions, setTopEmotions] = useState({ first: null, second: null });
+
   // Fetch data from the API
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -71,6 +73,15 @@ const BarChart = () => {
       // Generate data arrays
       const allTimeData = allLabels.map((label) => emotionCountsMonth[label] || 0);
 
+      // Find the top two emotions
+      const sortedEmotions = Object.entries(emotionCountsMonth).sort(
+        (a, b) => b[1] - a[1]
+      );
+      const firstEmotion = sortedEmotions[0] ? sortedEmotions[0][0] : null;
+      const secondEmotion = sortedEmotions[1] ? sortedEmotions[1][0] : null;
+
+      setTopEmotions({ first: firstEmotion, second: secondEmotion });
+
       // Update chart data
       setChartData({
         labels: allLabels,
@@ -89,17 +100,31 @@ const BarChart = () => {
   }, [emotionDataMonth]);
 
   return (
-    <CDBContainer>
-      <h3 className="mt-4">This Month Emotion Count</h3>
-      {error ? (
-        <p>Error loading data. Please try again later.</p>
-      ) : noData ? (
-        <p className='mt-3'>No data available.</p>
-      ) : (
-        <Bar data={chartData} options={{ responsive: true }} />
-      )}
-    </CDBContainer>
-  );
+      <CDBContainer>
+        <h3 className="mt-4">Current Month Emotion Counts</h3>
+        {error ? (
+          <p>Error loading data. Please try again later.</p>
+        ) : noData ? (
+          <p className="mt-3">No data available.</p>
+        ) : (
+          <>
+            <Bar data={chartData} options={{ responsive: true }} />
+            <div className="mt-4">
+              {topEmotions.first && (
+                <p>
+                  Most of the people are <strong>{topEmotions.first}</strong>
+                  {topEmotions.second && (
+                    <>
+                      , and some are <strong>{topEmotions.second}</strong>.
+                    </>
+                  )}
+                </p>
+              )}
+            </div>
+          </>
+        )}
+      </CDBContainer>
+    );
 };
 
 export default BarChart;
