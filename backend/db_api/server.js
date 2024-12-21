@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const {getEmotions} = require('./emotion_echo/emotions.js');
-const { login, verifyToken } = require('./auth/auth.js');  
+const { login, verifyToken, changePassword } = require('./auth/auth.js'); 
 
 //loading env variables
 require('dotenv').config();
@@ -17,6 +17,7 @@ app.use(express.json());
 app.post('/login', login);  
 app.post('/verify-token', verifyToken);  
 app.post('/getEmotions', getEmotions);
+app.post('/changePassword', changePassword);
 
 
 
