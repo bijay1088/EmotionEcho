@@ -6,6 +6,7 @@ import PieChart from '../charts/pieChart'
 import BarChart from '../charts/barChart'
 import RadarChart from '../charts/radarChart'
 import Table from '../table/table'
+import Profile from '../account/profile'
 
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
@@ -21,7 +22,7 @@ const dashboard = () => {
     <div className='m-4 cusContainer'>
 
     <Tabs
-      defaultActiveKey="chart"
+      defaultActiveKey="profile"
       id="fill-tab-example"
       className="mb-3"
       fill
@@ -58,8 +59,8 @@ const dashboard = () => {
       <Tab eventKey="table" title="Table" >
         <Table/>
       </Tab>
-      <Tab eventKey="contact" title="Contact">
-        Tab content for Contact
+      <Tab eventKey="profile" title="Profile">
+        <Profile/>
       </Tab>
     </Tabs>
       

@@ -4,6 +4,19 @@ import { CDBContainer } from 'cdbreact';
 import axios from 'axios';
 import Error from '../error/error';
 
+// Import required Chart.js modules
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+// Register modules
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const pieChart = () => {
 

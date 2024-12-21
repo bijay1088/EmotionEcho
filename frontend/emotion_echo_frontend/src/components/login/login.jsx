@@ -22,6 +22,9 @@ const Login = () => {
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('name', response.data.name);
         localStorage.setItem('role', response.data.role);
+        localStorage.setItem('organisation', response.data.organisation);
+        localStorage.setItem('id', response.data.id );
+        localStorage.setItem('username', response.data.username);
 
         setError('');
         window.location.reload();
@@ -31,8 +34,13 @@ const Login = () => {
         setError(response.data.error || 'Something went wrong');
       }
     } catch (err) {
-      console.error('Login failed:', err);
-      setError('Something went wrong. Please try again later.');
+      if (err.response) {
+        setError(err.response.data.error || 'Something went wrong');
+      } else if (err.request) {
+          setError('No response from server. Please try again later.');
+      } else {
+          setError('An unexpected error occurred.');
+      }
     }
   };
 

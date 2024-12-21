@@ -1,0 +1,55 @@
+.password_box, .profile_box {
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
+    padding: 40px 30px 30px 30px;
+    background-color: #eee7e7;
+    border-radius: 15px;
+    box-shadow: 13px 13px 20px #d8d4d4, -13px -13px 20px #f1eded;
+}
+
+.password_box .form-field input {
+    width: 100%;
+    display: block;
+    border: none;
+    outline: none;
+    background: none;
+    color: #666;
+    padding: 10px 15px 10px 10px;
+}
+
+.password_box .form-field {
+    padding-left: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
+}
+
+.password_box .password_field{
+    padding-left: 40px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.password_box .btn {
+    box-shadow: none;
+    width: 80%;
+    display: block;
+    text-align: center;
+    background-color: #03A9F4;
+    color: #fff;
+    border-radius: 25px;
+    box-shadow: 3px 3px 3px #b1b1b1,
+        -3px -3px 3px #fff;
+    letter-spacing: 1.3px;
+}
+
+
+.success {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-weight: 600;
+    text-align: center;
+    color: #10e01a;
+}
