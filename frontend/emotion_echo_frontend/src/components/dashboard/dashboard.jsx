@@ -22,7 +22,7 @@ const dashboard = () => {
     <div className='m-4 cusContainer'>
 
     <Tabs
-      defaultActiveKey="profile"
+      defaultActiveKey="chart"
       id="fill-tab-example"
       className="mb-3"
       fill
